@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4: Preserving World Heritage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        
+        .card-flip {
+            perspective: 1000px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .card-flip.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card-back {
+            transform: rotateY(180deg);
+        }
+        
+        .tooltip {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .tooltip-content {
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .tooltip:hover .tooltip-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .tooltip-content::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #1f2937;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bounce {
+            animation: bounce 0.5s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50 min-h-full">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <a href="https://nckhthptnk.github.io/tienganh11/" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 flex items-center space-x-2">
+                    <span>🏠</span>
+                    <span>Trang chủ</span>
+                </a>
+                <div></div>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-800 mb-2">🏛️ Unit 4: Preserving World Heritage</h1>
+            <p class="text-lg text-gray-600">Khám phá và học từ vựng về bảo tồn di sản thế giới</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="flex flex-wrap justify-center gap-4 mb-8">
+            <button onclick="showSection('vocabulary')" class="nav-btn bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                📚 Từ vựng
+            </button>
+            <button onclick="showSection('reading')" class="nav-btn bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                📖 Đọc hiểu
+            </button>
+            <button onclick="showSection('flashcard')" class="nav-btn bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                🎴 Flashcard
+            </button>
+            <button onclick="showSection('grammar')" class="nav-btn bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                📝 Ngữ pháp
+            </button>
+            <button onclick="showSection('heritage')" class="nav-btn bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                🌍 Di sản nổi tiếng
+            </button>
+            <button onclick="showSection('quiz')" class="nav-btn bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                🎯 Quiz
+            </button>
+        </nav>
+
+        <!-- Vocabulary Section -->
+        <section id="vocabulary" class="section-content">
+            <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6 text-center">📚 Từ vựng mới</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="vocabularyGrid">
+                    <!-- Vocabulary cards will be generated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading Section -->
+        <section id="reading" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-green-600 mb-6 text-center">📖 Bài đọc</h2>
+                <div class="prose max-w-none text-lg leading-relaxed" id="readingContent">
+                    <h3 class="text-2xl font-semibold mb-4">Preserving Our World Heritage</h3>
+                    <p class="mb-4">
+                        World <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="heritage">heritage<span class="tooltip-content">di sản</span></span> sites are places of outstanding universal value to humanity. These sites include both cultural and natural landmarks that have been recognized by UNESCO for their importance to our shared history and environment. Currently, there are over 1,100 World Heritage Sites across 167 countries, each telling a unique story of human civilization or natural wonder.
+                    </p>
+                    <p class="mb-4">
+                        The <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="preservation">preservation<span class="tooltip-content">bảo tồn</span></span> of these sites faces numerous challenges in the modern world. Climate change poses perhaps the greatest threat, with rising sea levels endangering coastal sites like Venice, while extreme weather events damage <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="archaeological">archaeological<span class="tooltip-content">khảo cổ học</span></span> remains. Urban development pressures continue to encroach upon protected areas, and mass tourism, while economically beneficial, can threaten the <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="integrity">integrity<span class="tooltip-content">tính toàn vẹn</span></span> of these precious locations through overcrowding and physical wear.
+                    </p>
+                    <p class="mb-4">
+                        <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="conservation">Conservation<span class="tooltip-content">bảo tồn</span></span> efforts require both local and international cooperation. Governments must work together to protect these sites for future generations while also allowing people to appreciate their beauty and historical <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="significance">significance<span class="tooltip-content">ý nghĩa quan trọng</span></span>. The World Heritage Committee meets annually to assess the state of conservation of listed sites and to consider new nominations. When sites are threatened, they may be placed on the List of World Heritage in Danger, which triggers international assistance and monitoring.
+                    </p>
+                    <p class="mb-4">
+                        Many heritage sites are particularly <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="vulnerable">vulnerable<span class="tooltip-content">dễ bị tổn thương</span></span> to damage from natural disasters and human activities. <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="vandalism">Vandalism<span class="tooltip-content">hành vi phá hoại</span></span> and looting remain serious concerns, particularly during times of conflict. The destruction of cultural heritage during wars, such as the bombing of historic sites in Syria or the Taliban's destruction of the Bamiyan Buddhas in Afghanistan, represents an irreplaceable loss to humanity's collective memory.
+                    </p>
+                    <p class="mb-4">
+                        Modern technology plays an increasingly important role in heritage preservation. Digital documentation through 3D scanning and virtual reality allows for detailed records of sites and <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="artifacts">artifacts<span class="tooltip-content">hiện vật</span></span>, while satellite monitoring helps track changes and threats. <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="sustainable">Sustainable<span class="tooltip-content">bền vững</span></span> tourism practices are being developed to balance economic benefits with conservation needs, ensuring that these <span class="tooltip text-blue-600 font-semibold underline decoration-dotted" data-word="monuments">monuments<span class="tooltip-content">di tích</span></span> and natural wonders survive for centuries to come.
+                    </p>
+                    
+                    <div class="bg-blue-50 p-6 rounded-lg mt-6">
+                        <h4 class="text-xl font-semibold text-blue-700 mb-4">Reading Comprehension Questions</h4>
+                        <div id="readingQuestions" class="space-y-4">
+                            <!-- Reading questions will be generated here -->
+                        </div>
+                        <div class="mt-4 text-center">
+                            <button onclick="checkReadingAnswers()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold">
+                                ✅ Check Answers
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <button onclick="startReadingQuiz()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                        📝 Làm quiz đọc hiểu
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcard Section -->
+        <section id="flashcard" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6 text-center">🎴 Flashcard</h2>
+                <div class="text-center mb-6">
+                    <div class="inline-flex bg-gray-100 rounded-full p-1 mb-4">
+                        <button onclick="setFlashcardMode('word')" class="flashcard-mode-btn bg-purple-500 text-white px-4 py-2 rounded-full font-semibold">Từ → Nghĩa</button>
+                        <button onclick="setFlashcardMode('meaning')" class="flashcard-mode-btn bg-gray-300 text-gray-700 px-4 py-2 rounded-full font-semibold">Nghĩa → Từ</button>
+                        <button onclick="setFlashcardMode('example')" class="flashcard-mode-btn bg-gray-300 text-gray-700 px-4 py-2 rounded-full font-semibold">Ví dụ</button>
+                    </div>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <button onclick="shuffleFlashcards()" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-full font-semibold">
+                            🔀 Xáo trộn
+                        </button>
+                        <button onclick="markAsLearned()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full font-semibold">
+                            ✅ Đã học
+                        </button>
+                        <button onclick="resetProgress()" class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-full font-semibold">
+                            🔄 Reset
+                        </button>
+                    </div>
+                    <div class="text-sm text-gray-600 mb-2">
+                        Đã học: <span id="learnedCount">0</span> / <span id="totalCount">20</span>
+                    </div>
+                </div>
+                <div class="max-w-md mx-auto">
+                    <div class="card-flip h-64 mb-6" id="flashcardContainer">
+                        <div class="card-inner">
+                            <div class="card-front bg-gradient-to-br from-purple-400 to-purple-600 text-white">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold mb-2" id="flashcardFront">heritage</div>
+                                    <div class="text-sm opacity-80" id="flashcardPronunciation">/ˈherɪtɪdʒ/</div>
+                                </div>
+                            </div>
+                            <div class="card-back bg-gradient-to-br from-blue-400 to-blue-600 text-white">
+                                <div class="text-center">
+                                    <div class="text-xl font-semibold" id="flashcardBack">di sản</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mb-4">
+                        <button onclick="previousFlashcard()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-full font-semibold">← Trước</button>
+                        <span class="text-gray-600 font-semibold" id="flashcardCounter">1 / 20</span>
+                        <button onclick="nextFlashcard()" class="bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-full font-semibold">Sau →</button>
+                    </div>
+                    <div class="text-center space-x-4">
+                        <button onclick="flipFlashcard()" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                            🔄 Lật thẻ
+                        </button>
+                        <button onclick="playFlashcardPronunciation()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                            🔊 Phát âm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grammar Section -->
+        <section id="grammar" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-orange-600 mb-6 text-center">📝 Ngữ pháp: Pair Conjunctions</h2>
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold mb-4">Liên từ kép (Pair Conjunctions)</h3>
+                    <div class="bg-orange-50 p-6 rounded-lg mb-6">
+                        <p class="text-lg mb-4">Liên từ kép là những cặp từ nối được sử dụng cùng nhau để kết nối các từ, cụm từ hoặc mệnh đề có cùng chức năng ngữ pháp.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg">
+                                <h4 class="font-semibold text-orange-600 mb-2">Các liên từ kép phổ biến:</h4>
+                                <ul class="list-disc list-inside space-y-1">
+                                    <li><strong>both...and</strong> (cả...và)</li>
+                                    <li><strong>either...or</strong> (hoặc...hoặc)</li>
+                                    <li><strong>neither...nor</strong> (không...cũng không)</li>
+                                    <li><strong>not only...but also</strong> (không chỉ...mà còn)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg">
+                                <h4 class="font-semibold text-orange-600 mb-2">Ví dụ:</h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li><strong>Both</strong> tourists <strong>and</strong> locals love this heritage site.</li>
+                                    <li><strong>Either</strong> we preserve it <strong>or</strong> we lose it forever.</li>
+                                    <li><strong>Neither</strong> rain <strong>nor</strong> snow stopped the restoration.</li>
+                                    <li><strong>Not only</strong> is it beautiful, <strong>but also</strong> historically significant.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h4 class="font-semibold text-blue-600 mb-3">Bài tập thực hành:</h4>
+                        <div id="grammarExercises" class="space-y-4">
+                            <!-- Grammar exercises will be generated here -->
+                        </div>
+                        <div class="mt-6 text-center">
+                            <button onclick="checkGrammarAnswers()" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold">
+                                ✅ Kiểm tra đáp án
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heritage Sites Section -->
+        <section id="heritage" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-indigo-600 mb-6 text-center">🌍 Famous World Heritage Sites</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="heritageGrid">
+                    <!-- Heritage sites will be generated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-red-600 mb-6 text-center">🎯 Quiz tổng hợp</h2>
+                <div id="quizContainer">
+                    <div class="text-center">
+                        <p class="text-lg mb-6">Chọn loại quiz và chế độ:</p>
+                        
+                        <!-- Quiz Type Selection -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Loại Quiz:</label>
+                            <select id="quizTypeSelect" class="w-full max-w-md mx-auto px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none">
+                                <option value="vocabulary">📚 Quiz từ vựng</option>
+                                <option value="reading">📖 Quiz đọc hiểu</option>
+                                <option value="grammar">📝 Quiz ngữ pháp</option>
+                                <option value="mixed">🎯 Quiz tổng hợp</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Quiz Mode Selection -->
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Chế độ:</label>
+                            <select id="quizModeSelect" class="w-full max-w-md mx-auto px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-red-500 focus:outline-none">
+                                <option value="easy">🟢 Dễ (10 câu)</option>
+                                <option value="medium">🟡 Trung bình (15 câu)</option>
+                                <option value="hard">🔴 Khó (20 câu)</option>
+                                <option value="custom">⚙️ Tùy chỉnh</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Custom Settings -->
+                        <div id="customSettings" class="mb-6 hidden">
+                            <div class="bg-gray-50 p-4 rounded-lg max-w-md mx-auto">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">Số câu hỏi:</label>
+                                <input type="number" id="customQuestions" min="5" max="50" value="15" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                                <label class="block text-sm font-semibold text-gray-700 mb-2 mt-3">Thời gian (giây/câu):</label>
+                                <input type="number" id="customTime" min="10" max="120" value="30" class="w-full px-3 py-2 border border-gray-300 rounded-lg">
+                            </div>
+                        </div>
+                        
+                        <button onclick="startCustomQuiz()" class="bg-red-500 hover:bg-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 transform hover:scale-105">
+                            🚀 Bắt đầu Quiz
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Vocabulary data
+        const vocabulary = [
+            { word: "heritage", pronunciation: "/ˈherɪtɪdʒ/", meaning: "di sản", example: "The ancient temple is part of our cultural heritage." },
+            { word: "preservation", pronunciation: "/ˌprezəˈveɪʃən/", meaning: "sự bảo tồn", example: "The preservation of historical sites requires careful planning." },
+            { word: "conservation", pronunciation: "/ˌkɒnsəˈveɪʃən/", meaning: "sự bảo tồn", example: "Wildlife conservation is essential for biodiversity." },
+            { word: "monument", pronunciation: "/ˈmɒnjʊmənt/", meaning: "di tích, tượng đài", example: "The Washington Monument is a famous landmark." },
+            { word: "archaeological", pronunciation: "/ˌɑːkɪəˈlɒdʒɪkəl/", meaning: "thuộc về khảo cổ học", example: "The archaeological site revealed ancient artifacts." },
+            { word: "restoration", pronunciation: "/ˌrestəˈreɪʃən/", meaning: "sự phục hồi", example: "The restoration of the old church took five years." },
+            { word: "integrity", pronunciation: "/ɪnˈteɡrɪti/", meaning: "tính toàn vẹn", example: "We must maintain the integrity of historical buildings." },
+            { word: "vulnerable", pronunciation: "/ˈvʌlnərəbəl/", meaning: "dễ bị tổn thương", example: "Coastal heritage sites are vulnerable to rising sea levels." },
+            { word: "deterioration", pronunciation: "/dɪˌtɪərɪəˈreɪʃən/", meaning: "sự xuống cấp", example: "The deterioration of the ancient walls is concerning." },
+            { word: "authentic", pronunciation: "/ɔːˈθentɪk/", meaning: "chính thống, thật", example: "The museum displays authentic medieval artifacts." },
+            { word: "excavation", pronunciation: "/ˌekskəˈveɪʃən/", meaning: "cuộc khai quật", example: "The excavation revealed a Roman settlement." },
+            { word: "artifact", pronunciation: "/ˈɑːtɪfækt/", meaning: "hiện vật", example: "The clay pot is a valuable archaeological artifact." },
+            { word: "inscription", pronunciation: "/ɪnˈskrɪpʃən/", meaning: "dòng chữ khắc", example: "The inscription on the stone tells an ancient story." },
+            { word: "legacy", pronunciation: "/ˈleɡəsi/", meaning: "di sản để lại", example: "The castle is a legacy from the medieval period." },
+            { word: "custodian", pronunciation: "/kʌˈstəʊdiən/", meaning: "người bảo vệ", example: "The museum custodian protects valuable collections." },
+            { word: "vandalism", pronunciation: "/ˈvændəlɪzəm/", meaning: "hành vi phá hoại", example: "Vandalism threatens many historical sites." },
+            { word: "renovation", pronunciation: "/ˌrenəˈveɪʃən/", meaning: "sự tu sửa", example: "The renovation project will restore the building's beauty." },
+            { word: "significance", pronunciation: "/sɪɡˈnɪfɪkəns/", meaning: "ý nghĩa quan trọng", example: "The historical significance of this site is immense." },
+            { word: "preservation", pronunciation: "/ˌprezəˈveɪʃən/", meaning: "sự bảo quản", example: "Digital preservation helps protect cultural documents." },
+            { word: "sustainable", pronunciation: "/səˈsteɪnəbəl/", meaning: "bền vững", example: "Sustainable tourism protects heritage sites for future generations." }
+        ];
+
+        // Heritage sites data
+        const heritageSites = [
+            {
+                name: "Machu Picchu",
+                country: "Peru",
+                year: 1983,
+                type: "Cultural",
+                description: "An ancient Incan citadel set high in the Andes Mountains, representing the pinnacle of Inca architecture and engineering.",
+                threats: "Tourism pressure, landslides, earthquakes",
+                icon: "🏔️"
+            },
+            {
+                name: "Great Wall of China",
+                country: "China", 
+                year: 1987,
+                type: "Cultural",
+                description: "A series of fortifications built across northern China, representing one of humanity's greatest architectural achievements.",
+                threats: "Weathering, tourism, urban development",
+                icon: "🏯"
+            },
+            {
+                name: "Taj Mahal",
+                country: "India",
+                year: 1983,
+                type: "Cultural", 
+                description: "A white marble mausoleum built by Mughal emperor Shah Jahan as a tomb for his wife Mumtaz Mahal.",
+                threats: "Air pollution, foundation problems, tourist damage",
+                icon: "🕌"
+            },
+            {
+                name: "Pyramids of Giza",
+                country: "Egypt",
+                year: 1979,
+                type: "Cultural",
+                description: "Ancient Egyptian pyramids and the Great Sphinx, representing the pinnacle of ancient Egyptian civilization.",
+                threats: "Urban encroachment, pollution, tourism",
+                icon: "🔺"
+            },
+            {
+                name: "Yellowstone National Park",
+                country: "USA",
+                year: 1978,
+                type: "Natural",
+                description: "The world's first national park, famous for its geothermal features and diverse wildlife ecosystem.",
+                threats: "Climate change, invasive species, tourism pressure",
+                icon: "🌋"
+            },
+            {
+                name: "Galápagos Islands",
+                country: "Ecuador",
+                year: 1978,
+                type: "Natural",
+                description: "Volcanic islands famous for unique wildlife that inspired Darwin's theory of evolution.",
+                threats: "Invasive species, tourism, climate change",
+                icon: "🐢"
+            },
+            {
+                name: "Angkor Wat",
+                country: "Cambodia",
+                year: 1992,
+                type: "Cultural",
+                description: "A massive temple complex originally built as a Hindu temple, later transformed into a Buddhist temple.",
+                threats: "Tourism pressure, looting, vegetation damage",
+                icon: "🏛️"
+            },
+            {
+                name: "Venice and its Lagoon",
+                country: "Italy",
+                year: 1987,
+                type: "Cultural",
+                description: "A unique city built on water, representing a masterpiece of human creative genius.",
+                threats: "Rising sea levels, tourism, subsidence",
+                icon: "🚤"
+            },
+            {
+                name: "Stonehenge",
+                country: "UK",
+                year: 1986,
+                type: "Cultural",
+                description: "A prehistoric monument consisting of standing stones arranged in a circle.",
+                threats: "Weathering, tourism pressure, road development",
+                icon: "🗿"
+            }
+        ];
+
+        // Current states
+        let currentSection = 'vocabulary';
+        let currentFlashcard = 0;
+        let flashcardMode = 'word';
+        let currentQuiz = null;
+        let currentQuizQuestion = 0;
+        let quizScore = 0;
+        let flashcardOrder = [];
+        let learnedCards = new Set();
+        let quizTimer = null;
+        let timeLeft = 0;
+
+        // Initialize the app
+        function init() {
+            generateVocabularyCards();
+            generateGrammarExercises();
+            generateHeritageCards();
+            generateReadingQuestions();
+            initializeFlashcards();
+            setupQuizModeSelector();
+            showSection('vocabulary');
+        }
+
+        // Navigation
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(section).classList.remove('hidden');
+            document.getElementById(section).classList.add('fade-in');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('ring-4', 'ring-opacity-50');
+            });
+            event.target.classList.add('ring-4', 'ring-opacity-50');
+            
+            currentSection = section;
+        }
+
+        // Generate vocabulary cards
+        function generateVocabularyCards() {
+            const grid = document.getElementById('vocabularyGrid');
+            grid.innerHTML = '';
+            
+            vocabulary.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-gradient-to-br from-blue-50 to-purple-50 p-6 rounded-xl border-2 border-blue-100 hover:border-blue-300 transition-all duration-300 transform hover:scale-105';
+                card.innerHTML = `
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-blue-600 mb-2">${item.word}</h3>
+                        <p class="text-gray-600 mb-2">${item.pronunciation}</p>
+                        <p class="text-lg font-semibold text-purple-600 mb-3">${item.meaning}</p>
+                        <div class="bg-white p-3 rounded-lg">
+                            <p class="text-sm text-gray-700 italic">"${item.example}"</p>
+                        </div>
+                        <button onclick="playPronunciation('${item.word}')" class="mt-3 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300">
+                            🔊 Phát âm
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Play pronunciation using Web Speech API
+        function playPronunciation(word) {
+            const button = event.target;
+            button.classList.add('bounce');
+            button.textContent = '🔊 Playing...';
+            
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                
+                utterance.onend = () => {
+                    button.textContent = '🔊 Phát âm';
+                    button.classList.remove('bounce');
+                };
+                
+                utterance.onerror = () => {
+                    button.textContent = '🔊 Phát âm';
+                    button.classList.remove('bounce');
+                };
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                setTimeout(() => {
+                    button.textContent = '🔊 Phát âm';
+                    button.classList.remove('bounce');
+                }, 1000);
+            }
+        }
+
+        // Flashcard functions
+        function setFlashcardMode(mode) {
+            flashcardMode = mode;
+            document.querySelectorAll('.flashcard-mode-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-500', 'text-white');
+                btn.classList.add('bg-gray-300', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-300', 'text-gray-700');
+            event.target.classList.add('bg-purple-500', 'text-white');
+            updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            const item = vocabulary[currentFlashcard];
+            const container = document.getElementById('flashcardContainer');
+            const front = document.getElementById('flashcardFront');
+            const back = document.getElementById('flashcardBack');
+            const pronunciation = document.getElementById('flashcardPronunciation');
+            const counter = document.getElementById('flashcardCounter');
+            
+            container.classList.remove('flipped');
+            
+            if (flashcardMode === 'word') {
+                front.textContent = item.word;
+                pronunciation.textContent = item.pronunciation;
+                back.textContent = item.meaning;
+            } else {
+                front.textContent = item.meaning;
+                pronunciation.textContent = '';
+                back.textContent = item.word + ' ' + item.pronunciation;
+            }
+            
+            counter.textContent = `${currentFlashcard + 1} / ${vocabulary.length}`;
+        }
+
+        function flipFlashcard() {
+            const container = document.getElementById('flashcardContainer');
+            container.classList.toggle('flipped');
+        }
+
+        function nextFlashcard() {
+            currentFlashcard = (currentFlashcard + 1) % vocabulary.length;
+            updateFlashcard();
+        }
+
+        function previousFlashcard() {
+            currentFlashcard = (currentFlashcard - 1 + vocabulary.length) % vocabulary.length;
+            updateFlashcard();
+        }
+
+        function playFlashcardPronunciation() {
+            const word = vocabulary[currentFlashcard].word;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Grammar exercises
+        function generateGrammarExercises() {
+            const exercises = [
+                {
+                    question: "Complete: _____ the tourists _____ the locals appreciate this heritage site.",
+                    options: ["Both...and", "Either...or", "Neither...nor", "Not only...but also"],
+                    correct: 0
+                },
+                {
+                    question: "Complete: We must _____ preserve it _____ lose it forever.",
+                    options: ["both...and", "either...or", "neither...nor", "not only...but also"],
+                    correct: 1
+                },
+                {
+                    question: "Complete: _____ rain _____ snow could stop the restoration work.",
+                    options: ["Both...and", "Either...or", "Neither...nor", "Not only...but also"],
+                    correct: 2
+                },
+                {
+                    question: "Complete: This site is _____ beautiful _____ historically significant.",
+                    options: ["both...and", "either...or", "neither...nor", "not only...but also"],
+                    correct: 3
+                }
+            ];
+
+            const container = document.getElementById('grammarExercises');
+            container.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const div = document.createElement('div');
+                div.className = 'bg-white p-4 rounded-lg border';
+                div.innerHTML = `
+                    <p class="font-semibold mb-3">${index + 1}. ${exercise.question}</p>
+                    <div class="grid grid-cols-2 gap-2">
+                        ${exercise.options.map((option, optIndex) => `
+                            <label class="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="radio" name="grammar${index}" value="${optIndex}" class="text-orange-500">
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="grammarResult${index}" class="mt-2 hidden"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function checkGrammarAnswers() {
+            const exercises = [
+                { correct: 0, explanation: "Both...and được dùng để nối hai thành phần tích cực." },
+                { correct: 1, explanation: "Either...or được dùng để chỉ sự lựa chọn giữa hai khả năng." },
+                { correct: 2, explanation: "Neither...nor được dùng để phủ định cả hai thành phần." },
+                { correct: 3, explanation: "Not only...but also được dùng để nhấn mạnh và bổ sung thông tin." }
+            ];
+
+            exercises.forEach((exercise, index) => {
+                const selected = document.querySelector(`input[name="grammar${index}"]:checked`);
+                const resultDiv = document.getElementById(`grammarResult${index}`);
+                
+                if (selected) {
+                    const isCorrect = parseInt(selected.value) === exercise.correct;
+                    resultDiv.className = `mt-2 p-2 rounded ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                    resultDiv.textContent = isCorrect ? `✅ Đúng! ${exercise.explanation}` : `❌ Sai. ${exercise.explanation}`;
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    resultDiv.className = 'mt-2 p-2 rounded bg-yellow-100 text-yellow-700';
+                    resultDiv.textContent = '⚠️ Vui lòng chọn đáp án.';
+                    resultDiv.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Quiz functions
+        function startQuiz(type) {
+            currentQuiz = type;
+            currentQuizQuestion = 0;
+            quizScore = 0;
+            
+            let questions = [];
+            
+            if (type === 'vocabulary') {
+                questions = generateVocabularyQuiz();
+            } else if (type === 'reading') {
+                questions = generateReadingQuiz();
+            } else if (type === 'grammar') {
+                questions = generateGrammarQuiz();
+            }
+            
+            displayQuiz(questions);
+        }
+
+        function generateVocabularyQuiz() {
+            const questions = [];
+            const shuffled = [...vocabulary].sort(() => 0.5 - Math.random()).slice(0, 10);
+            
+            shuffled.forEach(item => {
+                const wrongAnswers = vocabulary.filter(v => v.word !== item.word)
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 3)
+                    .map(v => v.meaning);
+                
+                const options = [item.meaning, ...wrongAnswers].sort(() => 0.5 - Math.random());
+                
+                questions.push({
+                    question: `What does "${item.word}" mean?`,
+                    options: options,
+                    correct: options.indexOf(item.meaning)
+                });
+            });
+            
+            return questions;
+        }
+
+        function generateReadingQuiz() {
+            return [
+                {
+                    question: "According to the reading, world heritage sites include:",
+                    options: ["Only cultural landmarks", "Only natural landmarks", "Both cultural and natural landmarks", "Only ancient buildings"],
+                    correct: 2
+                },
+                {
+                    question: "What challenges threaten world heritage sites?",
+                    options: ["Only climate change", "Only urban development", "Climate change, urban development, and tourism", "Only tourism"],
+                    correct: 2
+                },
+                {
+                    question: "Heritage conservation requires:",
+                    options: ["Only local government cooperation", "Only international cooperation", "Both local and international cooperation", "No cooperation"],
+                    correct: 2
+                }
+            ];
+        }
+
+        function generateGrammarQuiz() {
+            return [
+                {
+                    question: "Choose the correct pair conjunction: 'We must _____ preserve _____ destroy it.'",
+                    options: ["both...and", "either...or", "neither...nor", "not only...but also"],
+                    correct: 1
+                },
+                {
+                    question: "Choose the correct pair conjunction: 'This site is _____ beautiful _____ historically important.'",
+                    options: ["either...or", "neither...nor", "both...and", "not only...but also"],
+                    correct: 2
+                },
+                {
+                    question: "Choose the correct pair conjunction: '_____ tourists _____ locals should respect heritage sites.'",
+                    options: ["Either...or", "Neither...nor", "Both...and", "Not only...but also"],
+                    correct: 2
+                }
+            ];
+        }
+
+        function displayQuiz(questions) {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = `
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Câu ${currentQuizQuestion + 1}/${questions.length}</h3>
+                            <div class="text-sm text-gray-600">Điểm: ${quizScore}/${questions.length}</div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-500 h-2 rounded-full transition-all duration-300" style="width: ${((currentQuizQuestion) / questions.length) * 100}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <h4 class="text-lg font-semibold mb-4">${questions[currentQuizQuestion].question}</h4>
+                        <div class="space-y-3">
+                            ${questions[currentQuizQuestion].options.map((option, index) => `
+                                <button onclick="selectQuizAnswer(${index}, ${questions[currentQuizQuestion].correct})" 
+                                        class="quiz-option w-full text-left p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-red-300 transition-all duration-300">
+                                    ${String.fromCharCode(65 + index)}. ${option}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectQuizAnswer(selected, correct) {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((option, index) => {
+                option.disabled = true;
+                if (index === correct) {
+                    option.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                } else if (index === selected && selected !== correct) {
+                    option.classList.add('bg-red-100', 'border-red-500', 'text-red-700');
+                } else {
+                    option.classList.add('opacity-50');
+                }
+            });
+
+            if (selected === correct) {
+                quizScore++;
+            }
+
+            setTimeout(() => {
+                currentQuizQuestion++;
+                if (currentQuizQuestion < (currentQuiz === 'vocabulary' ? 10 : 3)) {
+                    let questions = [];
+                    if (currentQuiz === 'vocabulary') {
+                        questions = generateVocabularyQuiz();
+                    } else if (currentQuiz === 'reading') {
+                        questions = generateReadingQuiz();
+                    } else if (currentQuiz === 'grammar') {
+                        questions = generateGrammarQuiz();
+                    }
+                    displayQuiz(questions);
+                } else {
+                    showQuizResult();
+                }
+            }, 1500);
+        }
+
+        function showQuizResult() {
+            const container = document.getElementById('quizContainer');
+            const totalQuestions = currentQuiz === 'vocabulary' ? 10 : 3;
+            const percentage = Math.round((quizScore / totalQuestions) * 100);
+            
+            let message = '';
+            let color = '';
+            
+            if (percentage >= 80) {
+                message = 'Xuất sắc! 🎉';
+                color = 'text-green-600';
+            } else if (percentage >= 60) {
+                message = 'Tốt! 👍';
+                color = 'text-blue-600';
+            } else {
+                message = 'Cần cố gắng thêm! 💪';
+                color = 'text-orange-600';
+            }
+            
+            container.innerHTML = `
+                <div class="text-center max-w-md mx-auto">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <h3 class="text-3xl font-bold ${color} mb-4">${message}</h3>
+                        <div class="text-6xl font-bold text-gray-800 mb-2">${quizScore}/${totalQuestions}</div>
+                        <div class="text-2xl font-semibold text-gray-600 mb-6">${percentage}%</div>
+                        <div class="space-y-3">
+                            <button onclick="startQuiz('${currentQuiz}')" class="w-full bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                                🔄 Làm lại
+                            </button>
+                            <button onclick="showQuizMenu()" class="w-full bg-gray-500 hover:bg-gray-600 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300">
+                                📋 Chọn quiz khác
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showQuizMenu() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = `
+                <div class="text-center">
+                    <p class="text-lg mb-6">Chọn loại quiz bạn muốn làm:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button onclick="startQuiz('vocabulary')" class="bg-blue-500 hover:bg-blue-600 text-white p-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            📚 Quiz từ vựng
+                        </button>
+                        <button onclick="startQuiz('reading')" class="bg-green-500 hover:bg-green-600 text-white p-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            📖 Quiz đọc hiểu
+                        </button>
+                        <button onclick="startQuiz('grammar')" class="bg-orange-500 hover:bg-orange-600 text-white p-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                            📝 Quiz ngữ pháp
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function startReadingQuiz() {
+            showSection('quiz');
+            setTimeout(() => startQuiz('reading'), 300);
+        }
+
+        // Generate heritage cards
+        function generateHeritageCards() {
+            const grid = document.getElementById('heritageGrid');
+            grid.innerHTML = '';
+            
+            heritageSites.forEach((site, index) => {
+                const card = document.createElement('div');
+                card.className = 'bg-gradient-to-br from-indigo-50 to-purple-50 p-6 rounded-xl border-2 border-indigo-100 hover:border-indigo-300 transition-all duration-300 transform hover:scale-105';
+                card.innerHTML = `
+                    <div class="text-center">
+                        <div class="text-4xl mb-3">${site.icon}</div>
+                        <h3 class="text-xl font-bold text-indigo-600 mb-2">${site.name}</h3>
+                        <p class="text-gray-600 mb-2">${site.country} • ${site.year}</p>
+                        <span class="inline-block px-3 py-1 text-sm font-semibold rounded-full ${site.type === 'Cultural' ? 'bg-blue-100 text-blue-700' : 'bg-green-100 text-green-700'} mb-3">
+                            ${site.type}
+                        </span>
+                        <p class="text-sm text-gray-700 mb-3">${site.description}</p>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="text-xs text-red-700"><strong>Threats:</strong> ${site.threats}</p>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Generate reading questions
+        function generateReadingQuestions() {
+            const questions = [
+                {
+                    question: "How many World Heritage Sites are there currently?",
+                    options: ["Over 900", "Over 1,000", "Over 1,100", "Over 1,200"],
+                    correct: 2
+                },
+                {
+                    question: "What is mentioned as the greatest threat to heritage sites?",
+                    options: ["Tourism", "Urban development", "Climate change", "Vandalism"],
+                    correct: 2
+                },
+                {
+                    question: "What happens when heritage sites are threatened?",
+                    options: ["They are removed from the list", "They are placed on the List of World Heritage in Danger", "They lose UNESCO protection", "Nothing happens"],
+                    correct: 1
+                },
+                {
+                    question: "Which technology is mentioned for heritage preservation?",
+                    options: ["Artificial Intelligence", "3D scanning and virtual reality", "Blockchain", "Quantum computing"],
+                    correct: 1
+                },
+                {
+                    question: "What does the World Heritage Committee do annually?",
+                    options: ["Select new sites only", "Assess conservation and consider nominations", "Remove threatened sites", "Organize tourism"],
+                    correct: 1
+                }
+            ];
+
+            const container = document.getElementById('readingQuestions');
+            container.innerHTML = '';
+
+            questions.forEach((question, index) => {
+                const div = document.createElement('div');
+                div.className = 'bg-white p-4 rounded-lg border';
+                div.innerHTML = `
+                    <p class="font-semibold mb-3">${index + 1}. ${question.question}</p>
+                    <div class="space-y-2">
+                        ${question.options.map((option, optIndex) => `
+                            <label class="flex items-center space-x-2 cursor-pointer hover:bg-gray-50 p-2 rounded">
+                                <input type="radio" name="reading${index}" value="${optIndex}" class="text-blue-500">
+                                <span>${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div id="readingResult${index}" class="mt-2 hidden"></div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Check reading answers
+        function checkReadingAnswers() {
+            const questions = [
+                { correct: 2, explanation: "The text states there are over 1,100 World Heritage Sites." },
+                { correct: 2, explanation: "Climate change is mentioned as 'perhaps the greatest threat'." },
+                { correct: 1, explanation: "Threatened sites are placed on the List of World Heritage in Danger." },
+                { correct: 1, explanation: "3D scanning and virtual reality are mentioned for documentation." },
+                { correct: 1, explanation: "The Committee assesses conservation and considers new nominations annually." }
+            ];
+
+            questions.forEach((question, index) => {
+                const selected = document.querySelector(`input[name="reading${index}"]:checked`);
+                const resultDiv = document.getElementById(`readingResult${index}`);
+                
+                if (selected) {
+                    const isCorrect = parseInt(selected.value) === question.correct;
+                    resultDiv.className = `mt-2 p-2 rounded ${isCorrect ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+                    resultDiv.textContent = isCorrect ? `✅ Correct! ${question.explanation}` : `❌ Incorrect. ${question.explanation}`;
+                    resultDiv.classList.remove('hidden');
+                } else {
+                    resultDiv.className = 'mt-2 p-2 rounded bg-yellow-100 text-yellow-700';
+                    resultDiv.textContent = '⚠️ Please select an answer.';
+                    resultDiv.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Initialize flashcards
+        function initializeFlashcards() {
+            flashcardOrder = [...Array(vocabulary.length).keys()];
+            updateLearnedCount();
+        }
+
+        // Enhanced flashcard functions
+        function setFlashcardMode(mode) {
+            flashcardMode = mode;
+            document.querySelectorAll('.flashcard-mode-btn').forEach(btn => {
+                btn.classList.remove('bg-purple-500', 'text-white');
+                btn.classList.add('bg-gray-300', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-gray-300', 'text-gray-700');
+            event.target.classList.add('bg-purple-500', 'text-white');
+            updateFlashcard();
+        }
+
+        function updateFlashcard() {
+            const item = vocabulary[flashcardOrder[currentFlashcard]];
+            const container = document.getElementById('flashcardContainer');
+            const front = document.getElementById('flashcardFront');
+            const back = document.getElementById('flashcardBack');
+            const pronunciation = document.getElementById('flashcardPronunciation');
+            const counter = document.getElementById('flashcardCounter');
+            
+            container.classList.remove('flipped');
+            
+            // Add learned indicator
+            const isLearned = learnedCards.has(flashcardOrder[currentFlashcard]);
+            container.style.opacity = isLearned ? '0.7' : '1';
+            
+            if (flashcardMode === 'word') {
+                front.textContent = item.word;
+                pronunciation.textContent = item.pronunciation;
+                back.textContent = item.meaning;
+            } else if (flashcardMode === 'meaning') {
+                front.textContent = item.meaning;
+                pronunciation.textContent = '';
+                back.textContent = item.word + ' ' + item.pronunciation;
+            } else if (flashcardMode === 'example') {
+                front.textContent = 'Example';
+                pronunciation.textContent = '';
+                back.innerHTML = `<div class="text-sm">"${item.example}"</div><div class="mt-2 font-bold">${item.word}</div>`;
+            }
+            
+            counter.textContent = `${currentFlashcard + 1} / ${vocabulary.length}`;
+        }
+
+        function shuffleFlashcards() {
+            flashcardOrder = flashcardOrder.sort(() => Math.random() - 0.5);
+            currentFlashcard = 0;
+            updateFlashcard();
+        }
+
+        function markAsLearned() {
+            const currentIndex = flashcardOrder[currentFlashcard];
+            if (learnedCards.has(currentIndex)) {
+                learnedCards.delete(currentIndex);
+            } else {
+                learnedCards.add(currentIndex);
+            }
+            updateFlashcard();
+            updateLearnedCount();
+        }
+
+        function resetProgress() {
+            learnedCards.clear();
+            updateFlashcard();
+            updateLearnedCount();
+        }
+
+        function updateLearnedCount() {
+            document.getElementById('learnedCount').textContent = learnedCards.size;
+            document.getElementById('totalCount').textContent = vocabulary.length;
+        }
+
+        // Setup quiz mode selector
+        function setupQuizModeSelector() {
+            const modeSelect = document.getElementById('quizModeSelect');
+            const customSettings = document.getElementById('customSettings');
+            
+            modeSelect.addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    customSettings.classList.remove('hidden');
+                } else {
+                    customSettings.classList.add('hidden');
+                }
+            });
+        }
+
+        // Enhanced quiz functions
+        function startCustomQuiz() {
+            const quizType = document.getElementById('quizTypeSelect').value;
+            const quizMode = document.getElementById('quizModeSelect').value;
+            
+            let questionCount;
+            let timePerQuestion = 30;
+            
+            switch(quizMode) {
+                case 'easy':
+                    questionCount = 10;
+                    timePerQuestion = 45;
+                    break;
+                case 'medium':
+                    questionCount = 15;
+                    timePerQuestion = 30;
+                    break;
+                case 'hard':
+                    questionCount = 20;
+                    timePerQuestion = 20;
+                    break;
+                case 'custom':
+                    questionCount = parseInt(document.getElementById('customQuestions').value);
+                    timePerQuestion = parseInt(document.getElementById('customTime').value);
+                    break;
+            }
+            
+            startQuizWithSettings(quizType, questionCount, timePerQuestion);
+        }
+
+        function startQuizWithSettings(type, questionCount, timePerQuestion) {
+            currentQuiz = type;
+            currentQuizQuestion = 0;
+            quizScore = 0;
+            timeLeft = timePerQuestion;
+            
+            let questions = [];
+            
+            if (type === 'vocabulary') {
+                questions = generateVocabularyQuiz(questionCount);
+            } else if (type === 'reading') {
+                questions = generateReadingQuiz();
+            } else if (type === 'grammar') {
+                questions = generateGrammarQuiz();
+            } else if (type === 'mixed') {
+                questions = generateMixedQuiz(questionCount);
+            }
+            
+            displayQuizWithTimer(questions, timePerQuestion);
+        }
+
+        function generateMixedQuiz(count) {
+            const vocabQuestions = generateVocabularyQuiz(Math.ceil(count * 0.6));
+            const grammarQuestions = generateGrammarQuiz();
+            const readingQuestions = generateReadingQuiz();
+            
+            const allQuestions = [...vocabQuestions, ...grammarQuestions, ...readingQuestions];
+            return allQuestions.sort(() => Math.random() - 0.5).slice(0, count);
+        }
+
+        function generateVocabularyQuiz(count = 10) {
+            const questions = [];
+            const shuffled = [...vocabulary].sort(() => 0.5 - Math.random()).slice(0, count);
+            
+            shuffled.forEach(item => {
+                const wrongAnswers = vocabulary.filter(v => v.word !== item.word)
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 3)
+                    .map(v => v.meaning);
+                
+                const options = [item.meaning, ...wrongAnswers].sort(() => 0.5 - Math.random());
+                
+                questions.push({
+                    question: `What does "${item.word}" mean?`,
+                    options: options,
+                    correct: options.indexOf(item.meaning)
+                });
+            });
+            
+            return questions;
+        }
+
+        function displayQuizWithTimer(questions, timePerQuestion) {
+            const container = document.getElementById('quizContainer');
+            
+            function updateTimer() {
+                const timerElement = document.getElementById('quizTimer');
+                if (timerElement) {
+                    timerElement.textContent = `⏰ ${timeLeft}s`;
+                    if (timeLeft <= 5) {
+                        timerElement.classList.add('text-red-500', 'font-bold');
+                    }
+                }
+                
+                if (timeLeft <= 0) {
+                    // Auto-select wrong answer when time runs out
+                    selectQuizAnswer(-1, questions[currentQuizQuestion].correct);
+                    return;
+                }
+                
+                timeLeft--;
+                quizTimer = setTimeout(updateTimer, 1000);
+            }
+            
+            container.innerHTML = `
+                <div class="max-w-2xl mx-auto">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-semibold">Question ${currentQuizQuestion + 1}/${questions.length}</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="text-sm text-gray-600">Score: ${quizScore}/${questions.length}</div>
+                                <div id="quizTimer" class="text-sm font-semibold">⏰ ${timeLeft}s</div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-red-500 h-2 rounded-full transition-all duration-300" style="width: ${((currentQuizQuestion) / questions.length) * 100}%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                        <h4 class="text-lg font-semibold mb-4">${questions[currentQuizQuestion].question}</h4>
+                        <div class="space-y-3">
+                            ${questions[currentQuizQuestion].options.map((option, index) => `
+                                <button onclick="selectQuizAnswerWithTimer(${index}, ${questions[currentQuizQuestion].correct}, ${questions.length})" 
+                                        class="quiz-option w-full text-left p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-red-300 transition-all duration-300">
+                                    ${String.fromCharCode(65 + index)}. ${option}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            timeLeft = timePerQuestion;
+            updateTimer();
+        }
+
+        function selectQuizAnswerWithTimer(selected, correct, totalQuestions) {
+            clearTimeout(quizTimer);
+            
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach((option, index) => {
+                option.disabled = true;
+                if (index === correct) {
+                    option.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                } else if (index === selected && selected !== correct) {
+                    option.classList.add('bg-red-100', 'border-red-500', 'text-red-700');
+                } else {
+                    option.classList.add('opacity-50');
+                }
+            });
+
+            if (selected === correct) {
+                quizScore++;
+            }
+
+            setTimeout(() => {
+                currentQuizQuestion++;
+                if (currentQuizQuestion < totalQuestions) {
+                    const quizType = document.getElementById('quizTypeSelect').value;
+                    const quizMode = document.getElementById('quizModeSelect').value;
+                    
+                    let timePerQuestion = 30;
+                    switch(quizMode) {
+                        case 'easy': timePerQuestion = 45; break;
+                        case 'medium': timePerQuestion = 30; break;
+                        case 'hard': timePerQuestion = 20; break;
+                        case 'custom': timePerQuestion = parseInt(document.getElementById('customTime').value); break;
+                    }
+                    
+                    let questions = [];
+                    if (quizType === 'vocabulary') {
+                        questions = generateVocabularyQuiz(totalQuestions);
+                    } else if (quizType === 'reading') {
+                        questions = generateReadingQuiz();
+                    } else if (quizType === 'grammar') {
+                        questions = generateGrammarQuiz();
+                    } else if (quizType === 'mixed') {
+                        questions = generateMixedQuiz(totalQuestions);
+                    }
+                    
+                    displayQuizWithTimer(questions, timePerQuestion);
+                } else {
+                    showQuizResult();
+                }
+            }, 1500);
+        }
+
+        // Initialize the app when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99645cfcd421f44c',t:'MTc2MTc1ODYzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
