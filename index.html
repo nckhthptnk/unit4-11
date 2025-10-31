@@ -258,7 +258,7 @@
    </div><!-- Tab Navigation -->
    <div class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-     <nav class="flex"><button id="vocabularyTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Từ vựng </button> <button id="readingTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Bài đọc </button> <button id="grammarTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Ngữ pháp </button>
+     <nav class="flex"><button id="vocabularyTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Từ vựng </button> <button id="readingTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Bài đọc </button> <button id="grammarTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Ngữ pháp </button> <button id="heritageTab" class="tab-button flex-1 py-3 px-2 border-b-2 border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 font-medium text-xs sm:text-sm text-center"> Di sản thế giới </button>
      </nav>
     </div>
    </div><!-- Main Content -->
@@ -326,300 +326,8 @@
      </div>
     </div><!-- Reading Section -->
     <div id="readingSection" class="section" style="height: 100%; display: none; flex-direction: column;">
-     <div class="flex-1 flex flex-col"><!-- Reading Mode Toggle -->
-      <div class="max-w-2xl mx-auto mb-4 sm:mb-6">
-       <div class="bg-white rounded-lg shadow-sm p-1 sm:p-2 flex"><button id="heritageViewBtn" class="flex-1 py-2 sm:py-3 px-2 sm:px-4 rounded-lg font-medium transition-colors bg-indigo-600 text-white text-sm sm:text-base"> 🏛️ Di sản thế giới </button> <button id="readingViewBtn" class="flex-1 py-2 sm:py-3 px-2 sm:px-4 rounded-lg font-medium transition-colors text-gray-600 hover:text-gray-800 text-sm sm:text-base"> 📖 Bài đọc </button>
-       </div>
-      </div><!-- Heritage Sites View -->
-      <div id="heritageView" class="space-y-4 sm:space-y-6 flex-1 overflow-y-auto">
-       <div class="text-center mb-4 sm:mb-6">
-        <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">Di sản thế giới nổi tiếng</h3>
-        <p class="text-sm sm:text-base text-gray-600 px-2">Khám phá những di sản văn hóa và thiên nhiên được UNESCO công nhận</p>
-       </div>
-       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6"><!-- Vietnam Heritage Sites -->
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-24 sm:h-28 md:h-32 bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2">
-            🏔️
-           </div>
-           <div class="text-white text-xs sm:text-sm font-medium">
-            Thiên nhiên
-           </div>
-          </div>
-         </div>
-         <div class="p-3 sm:p-4">
-          <h4 class="font-bold text-sm sm:text-base md:text-lg text-gray-900 mb-1 sm:mb-2">Vịnh Hạ Long</h4>
-          <p class="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">🇻🇳 Việt Nam • Di sản thiên nhiên (1994)</p>
-          <p class="text-xs sm:text-sm text-gray-700 mb-2 sm:mb-3 leading-relaxed">Hàng nghìn tháp đá vôi nổi lên từ vùng biển xanh ngọc bích, tạo nên cảnh quan độc đáo với 1.969 hòn đảo.</p>
-          <div class="text-xs text-emerald-600 font-medium">
-           📍 Quảng Ninh • 🌊 1.553 km²
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🏰
-           </div>
-           <div class="text-white text-sm font-medium">
-            Cung đình
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Cố đô Huế</h4>
-          <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1993)</p>
-          <p class="text-sm text-gray-700 mb-3">Quần thể kiến trúc cung đình với cung điện, đền chùa và lăng tẩm của triều Nguyễn (1802-1945).</p>
-          <div class="text-xs text-orange-600 font-medium">
-           📍 Thừa Thiên Huế • 🏛️ 13 lăng tẩm
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🕉️
-           </div>
-           <div class="text-white text-sm font-medium">
-            Thánh địa
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Thánh địa Mỹ Sơn</h4>
-          <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1999)</p>
-          <p class="text-sm text-gray-700 mb-3">Quần thể đền tháp Chăm cổ được xây dựng từ gạch đỏ và sa thạch từ thế kỷ 4-14, trung tâm tôn giáo Hindu.</p>
-          <div class="text-xs text-amber-600 font-medium">
-           📍 Quảng Nam • 🕉️ 70 công trình
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🏮
-           </div>
-           <div class="text-white text-sm font-medium">
-            Phố cổ
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Phố cổ Hội An</h4>
-          <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1999)</p>
-          <p class="text-sm text-gray-700 mb-3">Thành phố cảng cổ với kiến trúc độc đáo pha trộn văn hóa Việt, Trung, Nhật từ thế kỷ 15-19.</p>
-          <div class="text-xs text-purple-600 font-medium">
-           📍 Quảng Nam • 🏮 1.107 ngôi nhà cổ
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🕳️
-           </div>
-           <div class="text-white text-sm font-medium">
-            Hang động
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Vườn Quốc gia Phong Nha</h4>
-          <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản thiên nhiên (2003)</p>
-          <p class="text-sm text-gray-700 mb-3">Hệ thống hang động karst lớn nhất thế giới với hang Sơn Trà - hang động lớn nhất hành tinh.</p>
-          <div class="text-xs text-green-600 font-medium">
-           📍 Quảng Bình • 🕳️ 2.734 hang động
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🏛️
-           </div>
-           <div class="text-white text-sm font-medium">
-            Di tích
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Khu di tích Thăng Long</h4>
-          <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (2010)</p>
-          <p class="text-sm text-gray-700 mb-3">Trung tâm quyền lực chính trị của Việt Nam trong hơn 1.000 năm, từ thế kỷ 7 đến 19.</p>
-          <div class="text-xs text-blue-600 font-medium">
-           📍 Hà Nội • 🏛️ 1.000+ năm lịch sử
-          </div>
-         </div>
-        </div><!-- World Heritage Sites -->
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🗼
-           </div>
-           <div class="text-white text-sm font-medium">
-            Biểu tượng
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Tháp Eiffel</h4>
-          <p class="text-sm text-gray-600 mb-2">🇫🇷 Pháp • Biểu tượng văn hóa (1991)</p>
-          <p class="text-sm text-gray-700 mb-3">Tháp sắt cao 330m, biểu tượng của Paris và kiệt tác kiến trúc thế kỷ 19, thu hút 7 triệu du khách/năm.</p>
-          <div class="text-xs text-yellow-600 font-medium">
-           📍 Paris • 🗼 324m cao
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🏟️
-           </div>
-           <div class="text-white text-sm font-medium">
-            Đấu trường
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Đấu trường Colosseum</h4>
-          <p class="text-sm text-gray-600 mb-2">🇮🇹 Ý • Di sản văn hóa (1980)</p>
-          <p class="text-sm text-gray-700 mb-3">Đấu trường La Mã cổ đại lớn nhất, chứa 50.000 khán giả, biểu tượng của đế chế La Mã hùng mạnh.</p>
-          <div class="text-xs text-red-600 font-medium">
-           📍 Roma • 🏛️ 72-80 AD
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-indigo-400 to-blue-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🏯
-           </div>
-           <div class="text-white text-sm font-medium">
-            Trường thành
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Vạn Lý Trường Thành</h4>
-          <p class="text-sm text-gray-600 mb-2">🇨🇳 Trung Quốc • Di sản văn hóa (1987)</p>
-          <p class="text-sm text-gray-700 mb-3">Công trình phòng thủ dài 21.196km, xây dựng từ thế kỷ 7 TCN, kỳ quan kiến trúc vĩ đại nhất thế giới.</p>
-          <div class="text-xs text-indigo-600 font-medium">
-           📍 Trung Quốc • 🏯 2.000+ năm
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🕌
-           </div>
-           <div class="text-white text-sm font-medium">
-            Lăng mộ
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Taj Mahal</h4>
-          <p class="text-sm text-gray-600 mb-2">🇮🇳 Ấn Độ • Di sản văn hóa (1983)</p>
-          <p class="text-sm text-gray-700 mb-3">Lăng mộ bằng đá cẩm thạch trắng, biểu tượng tình yêu bất diệt và kiệt tác kiến trúc Mughal thế kỷ 17.</p>
-          <div class="text-xs text-pink-600 font-medium">
-           📍 Agra • 💎 1632-1653
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            ⛰️
-           </div>
-           <div class="text-white text-sm font-medium">
-            Thành phố cổ
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Machu Picchu</h4>
-          <p class="text-sm text-gray-600 mb-2">🇵🇪 Peru • Di sản văn hóa (1983)</p>
-          <p class="text-sm text-gray-700 mb-3">Thành phố cổ của người Inca trên đỉnh núi cao 2.430m, "thành phố bị mất" được tìm thấy năm 1911.</p>
-          <div class="text-xs text-green-600 font-medium">
-           📍 Cusco • ⛰️ 2.430m
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🛕
-           </div>
-           <div class="text-white text-sm font-medium">
-            Đền Hindu
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Angkor Wat</h4>
-          <p class="text-sm text-gray-600 mb-2">🇰🇭 Campuchia • Di sản văn hóa (1992)</p>
-          <p class="text-sm text-gray-700 mb-3">Quần thể đền Hindu lớn nhất thế giới, xây dựng thế kỷ 12, kiệt tác kiến trúc Khmer cổ đại.</p>
-          <div class="text-xs text-purple-600 font-medium">
-           📍 Siem Reap • 🕉️ 162.6 ha
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🗽
-           </div>
-           <div class="text-white text-sm font-medium">
-            Tự do
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Tượng Nữ thần Tự do</h4>
-          <p class="text-sm text-gray-600 mb-2">🇺🇸 Mỹ • Di sản văn hóa (1984)</p>
-          <p class="text-sm text-gray-700 mb-3">Biểu tượng tự do và dân chủ cao 93m, quà tặng từ Pháp năm 1886, chào đón hàng triệu di dân.</p>
-          <div class="text-xs text-cyan-600 font-medium">
-           📍 New York • 🗽 1886
-          </div>
-         </div>
-        </div>
-        <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
-         <div class="h-32 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
-          <div class="text-center">
-           <div class="text-4xl mb-2">
-            🔺
-           </div>
-           <div class="text-white text-sm font-medium">
-            Kim tự tháp
-           </div>
-          </div>
-         </div>
-         <div class="p-4">
-          <h4 class="font-bold text-lg text-gray-900 mb-2">Kim tự tháp Giza</h4>
-          <p class="text-sm text-gray-600 mb-2">🇪🇬 Ai Cập • Di sản văn hóa (1979)</p>
-          <p class="text-sm text-gray-700 mb-3">Kỳ quan duy nhất còn tồn tại trong 7 kỳ quan thế giới cổ đại, xây dựng cách đây 4.500 năm.</p>
-          <div class="text-xs text-orange-600 font-medium">
-           📍 Cairo • 🔺 146.5m
-          </div>
-         </div>
-        </div>
-       </div>
-      </div><!-- Reading View -->
-      <div id="readingView" class="hidden flex-1 overflow-y-auto">
+     <div class="flex-1 flex flex-col"><!-- Reading View -->
+      <div id="readingView" class="flex-1 overflow-y-auto">
        <div class="bg-white rounded-lg shadow-sm p-3 sm:p-6 md:p-8 mb-4 sm:mb-6">
         <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Bài đọc: Preserving Our World Heritage</h3>
         <div class="prose prose-sm sm:prose-base max-w-none text-gray-700 leading-relaxed" id="readingText">
@@ -695,6 +403,296 @@
           <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
           </svg>
           <p class="text-base">Chọn một chủ đề để bắt đầu học</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Heritage Section -->
+    <div id="heritageSection" class="section" style="height: 100%; display: none; flex-direction: column;">
+     <div class="flex-1 overflow-y-auto">
+      <div class="text-center mb-4 sm:mb-6">
+       <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2">Di sản thế giới nổi tiếng</h3>
+       <p class="text-sm sm:text-base text-gray-600 px-2">Khám phá những di sản văn hóa và thiên nhiên được UNESCO công nhận</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6"><!-- Vietnam Heritage Sites -->
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-24 sm:h-28 md:h-32 bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-2xl sm:text-3xl md:text-4xl mb-1 sm:mb-2">
+           🏔️
+          </div>
+          <div class="text-white text-xs sm:text-sm font-medium">
+           Thiên nhiên
+          </div>
+         </div>
+        </div>
+        <div class="p-3 sm:p-4">
+         <h4 class="font-bold text-sm sm:text-base md:text-lg text-gray-900 mb-1 sm:mb-2">Vịnh Hạ Long</h4>
+         <p class="text-xs sm:text-sm text-gray-600 mb-1 sm:mb-2">🇻🇳 Việt Nam • Di sản thiên nhiên (1994)</p>
+         <p class="text-xs sm:text-sm text-gray-700 mb-2 sm:mb-3 leading-relaxed">Hàng nghìn tháp đá vôi nổi lên từ vùng biển xanh ngọc bích, tạo nên cảnh quan độc đáo với 1.969 hòn đảo.</p>
+         <div class="text-xs text-emerald-600 font-medium">
+          📍 Quảng Ninh • 🌊 1.553 km²
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-orange-400 to-red-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🏰
+          </div>
+          <div class="text-white text-sm font-medium">
+           Cung đình
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Cố đô Huế</h4>
+         <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1993)</p>
+         <p class="text-sm text-gray-700 mb-3">Quần thể kiến trúc cung đình với cung điện, đền chùa và lăng tẩm của triều Nguyễn (1802-1945).</p>
+         <div class="text-xs text-orange-600 font-medium">
+          📍 Thừa Thiên Huế • 🏛️ 13 lăng tẩm
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-amber-400 to-orange-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🕉️
+          </div>
+          <div class="text-white text-sm font-medium">
+           Thánh địa
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Thánh địa Mỹ Sơn</h4>
+         <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1999)</p>
+         <p class="text-sm text-gray-700 mb-3">Quần thể đền tháp Chăm cổ được xây dựng từ gạch đỏ và sa thạch từ thế kỷ 4-14, trung tâm tôn giáo Hindu.</p>
+         <div class="text-xs text-amber-600 font-medium">
+          📍 Quảng Nam • 🕉️ 70 công trình
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🏮
+          </div>
+          <div class="text-white text-sm font-medium">
+           Phố cổ
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Phố cổ Hội An</h4>
+         <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (1999)</p>
+         <p class="text-sm text-gray-700 mb-3">Thành phố cảng cổ với kiến trúc độc đáo pha trộn văn hóa Việt, Trung, Nhật từ thế kỷ 15-19.</p>
+         <div class="text-xs text-purple-600 font-medium">
+          📍 Quảng Nam • 🏮 1.107 ngôi nhà cổ
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🕳️
+          </div>
+          <div class="text-white text-sm font-medium">
+           Hang động
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Vườn Quốc gia Phong Nha</h4>
+         <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản thiên nhiên (2003)</p>
+         <p class="text-sm text-gray-700 mb-3">Hệ thống hang động karst lớn nhất thế giới với hang Sơn Trà - hang động lớn nhất hành tinh.</p>
+         <div class="text-xs text-green-600 font-medium">
+          📍 Quảng Bình • 🕳️ 2.734 hang động
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🏛️
+          </div>
+          <div class="text-white text-sm font-medium">
+           Di tích
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Khu di tích Thăng Long</h4>
+         <p class="text-sm text-gray-600 mb-2">🇻🇳 Việt Nam • Di sản văn hóa (2010)</p>
+         <p class="text-sm text-gray-700 mb-3">Trung tâm quyền lực chính trị của Việt Nam trong hơn 1.000 năm, từ thế kỷ 7 đến 19.</p>
+         <div class="text-xs text-blue-600 font-medium">
+          📍 Hà Nội • 🏛️ 1.000+ năm lịch sử
+         </div>
+        </div>
+       </div><!-- World Heritage Sites -->
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🗼
+          </div>
+          <div class="text-white text-sm font-medium">
+           Biểu tượng
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Tháp Eiffel</h4>
+         <p class="text-sm text-gray-600 mb-2">🇫🇷 Pháp • Biểu tượng văn hóa (1991)</p>
+         <p class="text-sm text-gray-700 mb-3">Tháp sắt cao 330m, biểu tượng của Paris và kiệt tác kiến trúc thế kỷ 19, thu hút 7 triệu du khách/năm.</p>
+         <div class="text-xs text-yellow-600 font-medium">
+          📍 Paris • 🗼 324m cao
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-red-400 to-orange-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🏟️
+          </div>
+          <div class="text-white text-sm font-medium">
+           Đấu trường
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Đấu trường Colosseum</h4>
+         <p class="text-sm text-gray-600 mb-2">🇮🇹 Ý • Di sản văn hóa (1980)</p>
+         <p class="text-sm text-gray-700 mb-3">Đấu trường La Mã cổ đại lớn nhất, chứa 50.000 khán giả, biểu tượng của đế chế La Mã hùng mạnh.</p>
+         <div class="text-xs text-red-600 font-medium">
+          📍 Roma • 🏛️ 72-80 AD
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-indigo-400 to-blue-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🏯
+          </div>
+          <div class="text-white text-sm font-medium">
+           Trường thành
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Vạn Lý Trường Thành</h4>
+         <p class="text-sm text-gray-600 mb-2">🇨🇳 Trung Quốc • Di sản văn hóa (1987)</p>
+         <p class="text-sm text-gray-700 mb-3">Công trình phòng thủ dài 21.196km, xây dựng từ thế kỷ 7 TCN, kỳ quan kiến trúc vĩ đại nhất thế giới.</p>
+         <div class="text-xs text-indigo-600 font-medium">
+          📍 Trung Quốc • 🏯 2.000+ năm
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-pink-400 to-rose-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🕌
+          </div>
+          <div class="text-white text-sm font-medium">
+           Lăng mộ
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Taj Mahal</h4>
+         <p class="text-sm text-gray-600 mb-2">🇮🇳 Ấn Độ • Di sản văn hóa (1983)</p>
+         <p class="text-sm text-gray-700 mb-3">Lăng mộ bằng đá cẩm thạch trắng, biểu tượng tình yêu bất diệt và kiệt tác kiến trúc Mughal thế kỷ 17.</p>
+         <div class="text-xs text-pink-600 font-medium">
+          📍 Agra • 💎 1632-1653
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           ⛰️
+          </div>
+          <div class="text-white text-sm font-medium">
+           Thành phố cổ
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Machu Picchu</h4>
+         <p class="text-sm text-gray-600 mb-2">🇵🇪 Peru • Di sản văn hóa (1983)</p>
+         <p class="text-sm text-gray-700 mb-3">Thành phố cổ của người Inca trên đỉnh núi cao 2.430m, "thành phố bị mất" được tìm thấy năm 1911.</p>
+         <div class="text-xs text-green-600 font-medium">
+          📍 Cusco • ⛰️ 2.430m
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-purple-400 to-indigo-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🛕
+          </div>
+          <div class="text-white text-sm font-medium">
+           Đền Hindu
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Angkor Wat</h4>
+         <p class="text-sm text-gray-600 mb-2">🇰🇭 Campuchia • Di sản văn hóa (1992)</p>
+         <p class="text-sm text-gray-700 mb-3">Quần thể đền Hindu lớn nhất thế giới, xây dựng thế kỷ 12, kiệt tác kiến trúc Khmer cổ đại.</p>
+         <div class="text-xs text-purple-600 font-medium">
+          📍 Siem Reap • 🕉️ 162.6 ha
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🗽
+          </div>
+          <div class="text-white text-sm font-medium">
+           Tự do
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Tượng Nữ thần Tự do</h4>
+         <p class="text-sm text-gray-600 mb-2">🇺🇸 Mỹ • Di sản văn hóa (1984)</p>
+         <p class="text-sm text-gray-700 mb-3">Biểu tượng tự do và dân chủ cao 93m, quà tặng từ Pháp năm 1886, chào đón hàng triệu di dân.</p>
+         <div class="text-xs text-cyan-600 font-medium">
+          📍 New York • 🗽 1886
+         </div>
+        </div>
+       </div>
+       <div class="heritage-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+        <div class="h-32 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+         <div class="text-center">
+          <div class="text-4xl mb-2">
+           🔺
+          </div>
+          <div class="text-white text-sm font-medium">
+           Kim tự tháp
+          </div>
+         </div>
+        </div>
+        <div class="p-4">
+         <h4 class="font-bold text-lg text-gray-900 mb-2">Kim tự tháp Giza</h4>
+         <p class="text-sm text-gray-600 mb-2">🇪🇬 Ai Cập • Di sản văn hóa (1979)</p>
+         <p class="text-sm text-gray-700 mb-3">Kỳ quan duy nhất còn tồn tại trong 7 kỳ quan thế giới cổ đại, xây dựng cách đây 4.500 năm.</p>
+         <div class="text-xs text-orange-600 font-medium">
+          📍 Cairo • 🔺 146.5m
          </div>
         </div>
        </div>
@@ -1561,37 +1559,7 @@
             }
         }
 
-        // Switch reading mode
-        function switchReadingMode(mode) {
-            readingMode = mode;
-            
-            // Update button styles
-            const heritageBtn = document.getElementById('heritageViewBtn');
-            const readingBtn = document.getElementById('readingViewBtn');
-            
-            if (mode === 'heritage') {
-                heritageBtn.classList.add('bg-indigo-600', 'text-white');
-                heritageBtn.classList.remove('text-gray-600');
-                readingBtn.classList.remove('bg-indigo-600', 'text-white');
-                readingBtn.classList.add('text-gray-600');
-                
-                document.getElementById('heritageView').classList.remove('hidden');
-                document.getElementById('readingView').classList.add('hidden');
-            } else {
-                readingBtn.classList.add('bg-indigo-600', 'text-white');
-                readingBtn.classList.remove('text-gray-600');
-                heritageBtn.classList.remove('bg-indigo-600', 'text-white');
-                heritageBtn.classList.add('text-gray-600');
-                
-                document.getElementById('heritageView').classList.add('hidden');
-                document.getElementById('readingView').classList.remove('hidden');
-                
-                // Generate reading quiz if not already generated
-                if (document.getElementById('readingQuiz').children.length === 0) {
-                    generateReadingQuiz();
-                }
-            }
-        }
+
 
         // Generate vocabulary test
         function generateVocabularyTest() {
@@ -1929,9 +1897,15 @@
             document.getElementById('vocabularySection').style.display = 'none';
             document.getElementById('readingSection').style.display = 'none';
             document.getElementById('grammarSection').style.display = 'none';
+            document.getElementById('heritageSection').style.display = 'none';
             
             // Show selected section
             document.getElementById(sectionName + 'Section').style.display = 'flex';
+            
+            // Generate reading quiz if entering reading section and not already generated
+            if (sectionName === 'reading' && document.getElementById('readingQuiz').children.length === 0) {
+                generateReadingQuiz();
+            }
             
             // Update tab buttons
             document.querySelectorAll('.tab-button').forEach(button => {
@@ -2185,14 +2159,13 @@
             document.getElementById('vocabularyTab').addEventListener('click', () => showSection('vocabulary'));
             document.getElementById('readingTab').addEventListener('click', () => showSection('reading'));
             document.getElementById('grammarTab').addEventListener('click', () => showSection('grammar'));
+            document.getElementById('heritageTab').addEventListener('click', () => showSection('heritage'));
             
             // Vocabulary mode toggle
             document.getElementById('learnModeBtn').addEventListener('click', () => switchVocabularyMode('learn'));
             document.getElementById('testModeBtn').addEventListener('click', () => switchVocabularyMode('test'));
             
-            // Reading mode toggle
-            document.getElementById('heritageViewBtn').addEventListener('click', () => switchReadingMode('heritage'));
-            document.getElementById('readingViewBtn').addEventListener('click', () => switchReadingMode('reading'));
+
             
             document.getElementById('nextWord').addEventListener('click', nextWord);
             document.getElementById('prevWord').addEventListener('click', prevWord);
@@ -2269,5 +2242,5 @@
         // Start the app
         init();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99734bc6245d403c',t:'MTc2MTkxNTIxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9974bfc8a0a8fda4',t:'MTc2MTkzMDQ1MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
