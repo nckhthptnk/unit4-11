@@ -331,9 +331,10 @@
        <div class="bg-white rounded-lg shadow-sm p-3 sm:p-6 md:p-8 mb-4 sm:mb-6">
         <h3 class="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Bài đọc: Preserving Our World Heritage</h3>
         <div class="prose prose-sm sm:prose-base max-w-none text-gray-700 leading-relaxed" id="readingText">
-         <p>Vietnam's <span class="highlight">world heritage sites</span> showcase the country's rich cultural and natural <span class="highlight">heritage</span>. The <span class="highlight">ancient</span> Imperial City of Hue, dating back to the 19th century, contains magnificent <span class="highlight">palaces</span>, <span class="highlight">temples</span>, and royal <span class="highlight">tombs</span>. This <span class="highlight">historic</span> complex represents the <span class="highlight">architectural</span> achievements of the Nguyen Dynasty and serves as a <span class="highlight">symbol</span> of Vietnamese <span class="highlight">civilization</span>.</p>
-         <p>Ha Long Bay, another <span class="highlight">famous</span> site, features thousands of limestone <span class="highlight">towers</span> rising from emerald waters. These <span class="highlight">unique</span> formations were created over millions of years and are <span class="highlight">recognized</span> as one of the world's most <span class="highlight">outstanding</span> natural wonders. The bay's <span class="highlight">unusual</span> beauty attracts millions of visitors who come to explore its hidden caves and <span class="highlight">chambers</span>.</p>
-         <p>My Son <span class="highlight">Sanctuary</span>, an important <span class="highlight">archaeological site</span>, contains the <span class="highlight">ruins</span> of ancient Cham <span class="highlight">temples</span> made of red brick and <span class="highlight">sandstone</span>. These <span class="highlight">monuments</span>, dating from the 4th to 14th centuries, demonstrate the sophisticated <span class="highlight">sculpture</span> and <span class="highlight">architecture</span> of the Cham people. Today, <span class="highlight">archaeologists</span> and <span class="highlight">conservation</span> experts work together to <span class="highlight">preserve</span> these precious <span class="highlight">historical</span> treasures for future <span class="highlight">generations</span>. Each site tells a <span class="highlight">unique</span> story of Vietnam's diverse cultural <span class="highlight">legacy</span>.</p>
+         <p>Vietnam's <u><strong>"world heritage sites"</strong></u> showcase the country's rich cultural and natural heritage. The ancient Imperial City of Hue, dating back to the 19th century, contains magnificent palaces, temples, and royal tombs. This historic complex represents the architectural achievements of the Nguyen Dynasty and serves as a symbol of Vietnamese civilization. <u><strong>"The preservation of these sites requires continuous effort and international cooperation"</strong></u> to maintain their authenticity and cultural value. [<strong>I</strong>]</p>
+         <p>Ha Long Bay, another famous site, features thousands of limestone towers rising from emerald waters. These unique formations were created over millions of years and are recognized as one of the world's most outstanding natural wonders. The bay's unusual beauty attracts millions of visitors who come to explore its hidden caves and chambers. <u><strong>"Tourism development must balance economic benefits with environmental protection"</strong></u> to ensure sustainable growth. [<strong>II</strong>]</p>
+         <p>My Son Sanctuary, an important archaeological site, contains the ruins of ancient Cham temples made of red brick and sandstone. These monuments, dating from the 4th to 14th centuries, demonstrate the sophisticated sculpture and architecture of the Cham people. The site faces challenges from natural weathering and human activities. [<strong>III</strong>] <u><strong>"Modern technology and traditional methods work together in restoration projects"</strong></u> to preserve these precious historical treasures.</p>
+         <p>Today, archaeologists and conservation experts collaborate internationally to protect Vietnam's heritage sites. Each site tells a unique story of the country's diverse cultural legacy. <u><strong>"Future generations will inherit these treasures only if we act responsibly today"</strong></u>. The success of preservation efforts depends on government support, community involvement, and global awareness of their universal value. [<strong>IV</strong>]</p>
         </div>
        </div>
        <div class="bg-white rounded-lg shadow-sm p-6 sm:p-8">
@@ -350,8 +351,8 @@
      </div>
     </div><!-- Grammar Section -->
     <div id="grammarSection" class="section" style="height: 100%; display: none; flex-direction: column;">
-     <div class="flex-1 flex flex-col">
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-1"><!-- Grammar Topics -->
+     <div class="flex-1 overflow-y-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full"><!-- Grammar Topics -->
        <div class="lg:col-span-1">
         <h3 class="text-lg font-bold text-gray-900 mb-4">Chọn chủ đề</h3>
         <div class="space-y-3">
@@ -397,8 +398,8 @@
          </div>
         </div>
        </div><!-- Grammar Content -->
-       <div class="lg:col-span-2 flex flex-col">
-        <div id="grammarContent" class="bg-white rounded-lg shadow-sm p-4 sm:p-6 flex-1 overflow-y-auto max-h-96">
+       <div class="lg:col-span-2">
+        <div id="grammarContent" class="bg-white rounded-lg shadow-sm p-4 sm:p-6 h-full overflow-y-auto">
          <div class="text-center text-gray-500 py-8">
           <svg class="w-12 h-12 mx-auto mb-3 text-gray-300" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
           </svg>
@@ -770,64 +771,84 @@
         // Reading quiz questions
         const readingQuestions = [
             {
-                question: "According to the passage, what does the Imperial City of Hue represent?",
+                question: "1. The word \"heritage\" in paragraph I is CLOSEST in meaning to ________________.",
                 options: [
-                    "Modern Vietnamese architecture",
-                    "The architectural achievements of the Nguyen Dynasty",
-                    "French colonial influence",
-                    "Buddhist temple design"
+                    "A. legacy",
+                    "B. building",
+                    "C. tourism",
+                    "D. development"
                 ],
-                correct: 1
+                correct: 0
             },
             {
-                question: "How were the limestone formations in Ha Long Bay created?",
+                question: "2. What does the word \"their\" in paragraph IV refer to?",
                 options: [
-                    "By human construction",
-                    "Through volcanic activity",
-                    "Over millions of years naturally",
-                    "By ancient civilizations"
+                    "A. archaeologists'",
+                    "B. experts'",
+                    "C. heritage sites'",
+                    "D. generations'"
                 ],
                 correct: 2
             },
             {
-                question: "What materials were used to build the temples at My Son Sanctuary?",
+                question: "3. The word \"continuous\" in paragraph I is OPPOSITE in meaning to ________________.",
                 options: [
-                    "Wood and bamboo",
-                    "Red brick and sandstone",
-                    "Marble and granite",
-                    "Concrete and steel"
+                    "A. ongoing",
+                    "B. interrupted",
+                    "C. constant",
+                    "D. regular"
                 ],
                 correct: 1
             },
             {
-                question: "When were the Cham temples at My Son built?",
+                question: "4. In which paragraph does the writer explain the challenges facing heritage sites?",
                 options: [
-                    "1st to 3rd centuries",
-                    "4th to 14th centuries",
-                    "15th to 17th centuries",
-                    "18th to 20th centuries"
+                    "A. Paragraph I",
+                    "B. Paragraph II",
+                    "C. Paragraph III",
+                    "D. Paragraph IV"
+                ],
+                correct: 2
+            },
+            {
+                question: "5. Where in the passage does the following sentence best fit? \"This requires careful planning and expert knowledge.\"",
+                options: [
+                    "A. [I]",
+                    "B. [II]",
+                    "C. [III]",
+                    "D. [IV]"
+                ],
+                correct: 2
+            },
+            {
+                question: "6. Which of the following is TRUE according to the passage?",
+                options: [
+                    "A. Ha Long Bay was created by human construction.",
+                    "B. My Son Sanctuary contains temples from the 4th to 14th centuries.",
+                    "C. The Imperial City of Hue represents modern Vietnamese architecture.",
+                    "D. Tourism has no impact on heritage site preservation."
                 ],
                 correct: 1
             },
             {
-                question: "What do all three heritage sites mentioned in the passage demonstrate?",
+                question: "7. Which of the following best paraphrases the underlined sentence \"Future generations will inherit these treasures only if we act responsibly today\"?",
                 options: [
-                    "Vietnam's modern development",
-                    "Foreign cultural influences",
-                    "Vietnam's diverse cultural legacy",
-                    "Economic prosperity"
+                    "A. Our children will receive these valuable sites if we protect them now.",
+                    "B. Future people will automatically get these treasures without our help.",
+                    "C. These sites will disappear unless we stop all tourism activities.",
+                    "D. Only wealthy generations can afford to maintain heritage sites."
                 ],
-                correct: 2
+                correct: 0
             },
             {
-                question: "Who works together to preserve the historical treasures mentioned?",
+                question: "8. Which can be inferred from the passage?",
                 options: [
-                    "Tourists and guides",
-                    "Government officials only",
-                    "Archaeologists and conservation experts",
-                    "Local communities alone"
+                    "A. Vietnam's heritage sites face no preservation challenges.",
+                    "B. International cooperation is essential for heritage conservation.",
+                    "C. Tourism should be completely banned at heritage sites.",
+                    "D. Modern technology cannot help in restoration projects."
                 ],
-                correct: 2
+                correct: 1
             }
         ];
 
@@ -1411,6 +1432,9 @@
         let currentQuestionIndex = 0;
         let vocabularyTestAnswers = [];
         let vocabularyTestMistakes = [];
+        let currentGrammarIndex = 0;
+        let grammarTestAnswers = [];
+        let grammarTestMistakes = [];
         let progressData = {
             progress_vocabulary: 0,
             progress_reading: 0,
@@ -2029,68 +2053,215 @@
 
         // Generate grammar exercises
         function generateGrammarExercises() {
+            // Reset grammar test state
+            currentGrammarIndex = 0;
+            grammarTestAnswers = new Array(grammarExercises.length).fill(null);
+            grammarTestMistakes = [];
+            
             const contentDiv = document.getElementById('grammarContent');
             contentDiv.innerHTML = `
                 <div class="fade-in">
-                    <h4 class="text-base font-bold mb-4">Bài tập tổng hợp - 30 câu trắc nghiệm</h4>
-                    <div id="grammarExercises" class="space-y-4">
-                        ${grammarExercises.map((q, index) => `
-                            <div class="mb-4">
-                                <div class="font-medium text-gray-900 mb-2 text-sm">${index + 1}. ${q.question}</div>
-                                <div class="space-y-1">
-                                    ${q.options.map((option, optionIndex) => `
-                                        <div class="quiz-option border border-gray-200 rounded-lg p-2 hover:border-indigo-300 transition-colors" 
-                                             data-question="${index}" data-option="${optionIndex}">
-                                            <label class="flex items-center cursor-pointer">
-                                                <input type="radio" name="grammar${index}" value="${optionIndex}" class="mr-2">
-                                                <span class="text-sm">${option}</span>
-                                            </label>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `).join('')}
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 sm:mb-6 gap-2">
+                        <h4 class="text-base sm:text-lg font-bold text-gray-900">Bài tập tổng hợp - 30 câu</h4>
+                        <div class="text-xs sm:text-sm text-gray-600 flex-shrink-0">
+                            <span id="currentGrammarIndex">1</span> / <span id="totalGrammarQuestions">30</span>
+                        </div>
                     </div>
-                    <div class="text-center mt-6">
-                        <button id="submitGrammarQuiz" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-                            📝 Nộp bài
+                    
+                    <div id="grammarExercises">
+                        <!-- Single question will be displayed here -->
+                    </div>
+                    
+                    <div class="flex justify-between items-center mt-4 sm:mt-6 gap-2">
+                        <button id="prevGrammarQuestion" class="bg-gray-500 hover:bg-gray-600 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-colors text-sm sm:text-base">
+                            ← Trước
+                        </button>
+                        <div class="flex">
+                            <button id="submitGrammarTest" class="bg-green-600 hover:bg-green-700 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-colors text-sm sm:text-base">
+                                📝 Nộp bài
+                            </button>
+                        </div>
+                        <button id="nextGrammarQuestion" class="bg-indigo-600 hover:bg-indigo-700 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-colors text-sm sm:text-base">
+                            Tiếp →
                         </button>
                     </div>
-                    <div id="grammarResult" class="mt-4 hidden">
+                    
+                    <div id="grammarTestResult" class="mt-6 hidden">
                         <div class="text-center">
-                            <div id="grammarScore" class="text-xl font-bold text-green-600 mb-2"></div>
-                            <button id="retakeGrammarQuiz" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-                                🔄 Làm lại
-                            </button>
+                            <div id="grammarTestScore" class="text-2xl font-bold text-green-600 mb-4"></div>
+                            <div class="space-x-4">
+                                <button id="retakeGrammarTest" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                                    🔄 Làm lại
+                                </button>
+                                <button id="reviewGrammarMistakes" class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                                    📋 Xem lại sai
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
+            
+            // Show first question
+            displayCurrentGrammarQuestion();
+            updateGrammarNavigation();
         }
 
-        // Check grammar quiz
-        function checkGrammarQuiz() {
+        // Display current grammar question
+        function displayCurrentGrammarQuestion() {
+            const exercisesContainer = document.getElementById('grammarExercises');
+            const q = grammarExercises[currentGrammarIndex];
+            const isAnswered = grammarTestAnswers[currentGrammarIndex] !== null;
+            
+            exercisesContainer.innerHTML = `
+                <div class="mb-6">
+                    <div class="font-medium text-gray-900 mb-4 text-lg">${currentGrammarIndex + 1}. ${q.question}</div>
+                    <div class="space-y-3">
+                        ${q.options.map((option, optionIndex) => `
+                            <div class="quiz-option border border-gray-200 rounded-lg p-4 hover:border-indigo-300 transition-colors cursor-pointer ${isAnswered ? 'pointer-events-none' : ''}" 
+                                 data-option="${optionIndex}">
+                                <label class="flex items-center cursor-pointer w-full">
+                                    <input type="radio" name="currentGrammarQuestion" value="${optionIndex}" class="mr-3" 
+                                           ${grammarTestAnswers[currentGrammarIndex] === optionIndex ? 'checked' : ''}
+                                           ${isAnswered ? 'disabled' : ''}>
+                                    <span class="text-base">${option}</span>
+                                </label>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${isAnswered ? `
+                        <div class="mt-4 p-4 rounded-lg ${grammarTestAnswers[currentGrammarIndex] === q.correct ? 'bg-green-100 border border-green-300' : 'bg-red-100 border border-red-300'}">
+                            <div class="flex items-center mb-2">
+                                <span class="text-2xl mr-2">${grammarTestAnswers[currentGrammarIndex] === q.correct ? '✅' : '❌'}</span>
+                                <span class="font-semibold ${grammarTestAnswers[currentGrammarIndex] === q.correct ? 'text-green-800' : 'text-red-800'}">
+                                    ${grammarTestAnswers[currentGrammarIndex] === q.correct ? 'Chính xác!' : 'Sai rồi!'}
+                                </span>
+                            </div>
+                            ${grammarTestAnswers[currentGrammarIndex] !== q.correct ? `
+                                <div class="text-sm text-red-700 mb-1"><strong>Đáp án đúng:</strong> ${q.options[q.correct]}</div>
+                                <div class="text-sm text-red-600"><strong>Bạn chọn:</strong> ${q.options[grammarTestAnswers[currentGrammarIndex]]}</div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            // Update question counter
+            document.getElementById('currentGrammarIndex').textContent = currentGrammarIndex + 1;
+            document.getElementById('totalGrammarQuestions').textContent = grammarExercises.length;
+            
+            // Add event listeners for options (only if not answered)
+            if (!isAnswered) {
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.addEventListener('click', () => {
+                        const optionIndex = parseInt(option.dataset.option);
+                        grammarTestAnswers[currentGrammarIndex] = optionIndex;
+                        
+                        // Check answer immediately
+                        checkCurrentGrammarAnswer(optionIndex, q.correct);
+                        
+                        // Redisplay question with result
+                        setTimeout(() => {
+                            displayCurrentGrammarQuestion();
+                        }, 100);
+                    });
+                });
+            } else {
+                // Show the result styling for answered question
+                const userAnswer = grammarTestAnswers[currentGrammarIndex];
+                const correctAnswer = q.correct;
+                
+                document.querySelectorAll('.quiz-option').forEach((option, index) => {
+                    if (index === userAnswer) {
+                        if (userAnswer === correctAnswer) {
+                            option.classList.add('correct');
+                        } else {
+                            option.classList.add('incorrect');
+                        }
+                    }
+                    if (index === correctAnswer && userAnswer !== correctAnswer) {
+                        option.classList.add('correct');
+                    }
+                });
+            }
+        }
+        
+        // Check current grammar answer immediately
+        function checkCurrentGrammarAnswer(selectedOption, correctOption) {
+            if (selectedOption === correctOption) {
+                playCorrectSound();
+            } else {
+                playIncorrectSound();
+            }
+        }
+        
+        // Update grammar navigation buttons
+        function updateGrammarNavigation() {
+            const prevBtn = document.getElementById('prevGrammarQuestion');
+            const nextBtn = document.getElementById('nextGrammarQuestion');
+            
+            prevBtn.disabled = currentGrammarIndex === 0;
+            nextBtn.disabled = currentGrammarIndex === grammarExercises.length - 1;
+            
+            if (prevBtn.disabled) {
+                prevBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                prevBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+            
+            if (nextBtn.disabled) {
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            }
+        }
+        
+        // Navigate to previous grammar question
+        function prevGrammarQuestion() {
+            if (currentGrammarIndex > 0) {
+                currentGrammarIndex--;
+                displayCurrentGrammarQuestion();
+                updateGrammarNavigation();
+            }
+        }
+        
+        // Navigate to next grammar question
+        function nextGrammarQuestion() {
+            if (currentGrammarIndex < grammarExercises.length - 1) {
+                currentGrammarIndex++;
+                displayCurrentGrammarQuestion();
+                updateGrammarNavigation();
+            }
+        }
+
+        // Check grammar test
+        function checkGrammarTest() {
             let correct = 0;
             const total = grammarExercises.length;
+            grammarTestMistakes = [];
             
             grammarExercises.forEach((q, index) => {
-                const selectedOption = document.querySelector(`input[name="grammar${index}"]:checked`);
+                const userAnswer = grammarTestAnswers[index];
                 
-                if (selectedOption) {
-                    const selectedValue = parseInt(selectedOption.value);
-                    const optionDiv = document.querySelector(`[data-question="${index}"][data-option="${selectedValue}"]`);
-                    
-                    if (selectedValue === q.correct) {
+                if (userAnswer !== null) {
+                    if (userAnswer === q.correct) {
                         correct++;
-                        optionDiv.classList.add('correct');
-                        playCorrectSound();
                     } else {
-                        optionDiv.classList.add('incorrect');
-                        playIncorrectSound();
-                        // Show correct answer
-                        const correctDiv = document.querySelector(`[data-question="${index}"][data-option="${q.correct}"]`);
-                        correctDiv.classList.add('correct');
+                        grammarTestMistakes.push({
+                            questionIndex: index,
+                            question: q.question,
+                            correctAnswer: q.options[q.correct],
+                            userAnswer: q.options[userAnswer]
+                        });
                     }
+                } else {
+                    // No answer selected
+                    grammarTestMistakes.push({
+                        questionIndex: index,
+                        question: q.question,
+                        correctAnswer: q.options[q.correct],
+                        userAnswer: "Không trả lời"
+                    });
                 }
             });
             
@@ -2102,9 +2273,89 @@
             saveProgress();
             
             // Show result
-            document.getElementById('grammarScore').textContent = `${correct}/${total} (${percentage}%)`;
-            document.getElementById('grammarResult').classList.remove('hidden');
-            document.getElementById('submitGrammarQuiz').style.display = 'none';
+            document.getElementById('grammarTestScore').textContent = `${correct}/${total} (${percentage}%)`;
+            document.getElementById('grammarTestResult').classList.remove('hidden');
+            
+            // Hide navigation buttons and show result
+            document.getElementById('prevGrammarQuestion').style.display = 'none';
+            document.getElementById('nextGrammarQuestion').style.display = 'none';
+            document.getElementById('submitGrammarTest').style.display = 'none';
+            
+            // Show detailed results
+            showDetailedGrammarResults();
+        }
+        
+        // Show detailed grammar results
+        function showDetailedGrammarResults() {
+            const exercisesContainer = document.getElementById('grammarExercises');
+            const correct = grammarExercises.length - grammarTestMistakes.length;
+            const total = grammarExercises.length;
+            
+            let resultHtml = `
+                <div class="text-center mb-8">
+                    <div class="text-3xl font-bold ${correct >= total * 0.8 ? 'text-green-600' : correct >= total * 0.6 ? 'text-yellow-600' : 'text-red-600'} mb-2">
+                        ${correct}/${total} (${Math.round((correct/total)*100)}%)
+                    </div>
+                    <div class="text-lg text-gray-600">
+                        ${correct >= total * 0.8 ? '🎉 Xuất sắc!' : correct >= total * 0.6 ? '👍 Khá tốt!' : '💪 Cần cố gắng thêm!'}
+                    </div>
+                </div>
+            `;
+            
+            if (grammarTestMistakes.length > 0) {
+                resultHtml += `
+                    <div class="mb-6">
+                        <h4 class="text-lg font-bold text-red-800 mb-4">Các câu sai (${grammarTestMistakes.length} câu):</h4>
+                        <div class="space-y-4 max-h-96 overflow-y-auto">
+                            ${grammarTestMistakes.map((mistake, index) => `
+                                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                    <div class="font-medium text-red-800 mb-2">Câu ${mistake.questionIndex + 1}: ${mistake.question}</div>
+                                    <div class="text-sm text-green-700 mb-1"><strong>Đáp án đúng:</strong> ${mistake.correctAnswer}</div>
+                                    <div class="text-sm text-red-700"><strong>Bạn chọn:</strong> ${mistake.userAnswer}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultHtml += `
+                    <div class="text-center py-8">
+                        <div class="text-6xl mb-4">🏆</div>
+                        <div class="text-xl font-bold text-green-600">Hoàn hảo! Bạn đã làm đúng tất cả!</div>
+                    </div>
+                `;
+            }
+            
+            exercisesContainer.innerHTML = resultHtml;
+        }
+
+        // Show grammar mistakes
+        function showGrammarMistakes() {
+            if (grammarTestMistakes.length === 0) {
+                alert('Chúc mừng! Bạn đã làm đúng tất cả các câu!');
+                return;
+            }
+            
+            const mistakesHtml = grammarTestMistakes.map((mistake, index) => `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                    <div class="font-medium text-red-800 mb-2">${index + 1}. ${mistake.question}</div>
+                    <div class="text-sm text-red-700 mb-1"><strong>Đáp án đúng:</strong> ${mistake.correctAnswer}</div>
+                    <div class="text-sm text-red-700"><strong>Bạn chọn:</strong> ${mistake.userAnswer}</div>
+                </div>
+            `).join('');
+            
+            const exercisesContainer = document.getElementById('grammarExercises');
+            exercisesContainer.innerHTML = `
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-red-800 mb-4">Các câu bạn làm sai (${grammarTestMistakes.length} câu):</h4>
+                    ${mistakesHtml}
+                    <div class="text-center mt-6">
+                        <button id="backToGrammarTest" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                            ← Quay lại kết quả
+                        </button>
+                    </div>
+                </div>
+            `;
         }
 
         // Element SDK implementation
@@ -2206,10 +2457,27 @@
                 } else if (e.target.id === 'retakeReadingQuiz') {
                     generateReadingQuiz();
                     document.getElementById('readingResult').classList.add('hidden');
-                } else if (e.target.id === 'submitGrammarQuiz') {
-                    checkGrammarQuiz();
-                } else if (e.target.id === 'retakeGrammarQuiz') {
+                } else if (e.target.id === 'submitGrammarTest') {
+                    checkGrammarTest();
+                } else if (e.target.id === 'retakeGrammarTest') {
+                    // Reset navigation buttons
+                    document.getElementById('prevGrammarQuestion').style.display = 'block';
+                    document.getElementById('nextGrammarQuestion').style.display = 'block';
+                    document.getElementById('submitGrammarTest').style.display = 'block';
                     generateGrammarExercises();
+                } else if (e.target.id === 'reviewGrammarMistakes') {
+                    showGrammarMistakes();
+                } else if (e.target.id === 'backToGrammarTest') {
+                    generateGrammarExercises();
+                    // Show result again
+                    setTimeout(() => {
+                        document.getElementById('grammarTestResult').classList.remove('hidden');
+                        document.getElementById('submitGrammarTest').style.display = 'none';
+                    }, 100);
+                } else if (e.target.id === 'prevGrammarQuestion') {
+                    prevGrammarQuestion();
+                } else if (e.target.id === 'nextGrammarQuestion') {
+                    nextGrammarQuestion();
                 } else if (e.target.id === 'submitVocabularyTest') {
                     checkVocabularyTest();
                 } else if (e.target.id === 'retakeVocabularyTest') {
@@ -2242,5 +2510,5 @@
         // Start the app
         init();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'997bbf30a6a3fd07',t:'MTc2MjAwMzgyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99dfd671a7f1b15c',t:'MTc2MzA1MzM1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
